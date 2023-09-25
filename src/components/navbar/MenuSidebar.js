@@ -8,6 +8,7 @@ import { SiSkypeforbusiness } from "react-icons/si";
 import { getAllLinks } from "../../utils/data";
 import logo from "../../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
+import useOpen from "./../../stores/useOpen";
 
 const icons = [
   { id: 1, option: "online", name: <SiSkypeforbusiness /> },
@@ -16,20 +17,20 @@ const icons = [
   { id: 4, option: "patient", name: <MdOutlineSick /> },
   { id: 5, option: "login", name: <LiaUserNurseSolid /> },
 ];
-const MenuSidebar = ({ open, setOpen }) => {
+const MenuSidebar = () => {
   const links = getAllLinks();
   const [tab, setTab] = useState("patient");
-  const [close, setClose] = useState(false);
   const navigate = useNavigate();
+  const { isOpen, onClose } = useOpen();
   return (
     <div
       className={`fixed top-0 shadow-lg bg-white h-full ${
-        open ? "right-0" : "-right-72"
+        isOpen ? "right-0 z-50" : "-right-72"
       } w-72 duration-300 flex`}
     >
       <div className="w-[20%] flex flex-col items-center py-5 bg-opacity-20 bg-gray-400">
         <RiCloseCircleFill
-          onClick={() => setOpen(false)}
+          onClick={onClose}
           className="text-red-600 hover:text-red-700 duration-200 cursor-pointer"
         />
         <FaStethoscope
@@ -51,7 +52,10 @@ const MenuSidebar = ({ open, setOpen }) => {
         </div>
       </div>
       <div className={`w-[80%] bg-white duration-200 py-5`}>
-        <div onClick={()=> navigate('/')} className="flex items-center cursor-pointer justify-center border-b pb-4 ">
+        <div
+          onClick={() => navigate("/")}
+          className="flex items-center cursor-pointer justify-center border-b pb-4 "
+        >
           <img src={logo} alt="logo" className="w-24" />
         </div>
         <div className="p-2 h-screen overflow-y-auto">

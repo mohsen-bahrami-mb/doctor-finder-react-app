@@ -1,7 +1,9 @@
-import { Navigate } from "react-router-dom";
+import Home from "../components/homPage/Home";
+import SearchPage from "../components/search/SearchPage";
 
 const homeRoutes = [
-    // {path: "/", element: <Any... />}
+    {path: "/", element: <Home />},
+    {path: "/search", element: <SearchPage />},
 ];
 
 const routes = [

@@ -1,4 +1,8 @@
-import { AiTwotonePhone } from "react-icons/ai";
+import { AiTwotoneHome, AiTwotonePhone } from "react-icons/ai";
+
+import { BsCalendarDateFill } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 import { FiChevronsLeft } from "react-icons/fi";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
@@ -202,10 +206,41 @@ const FOOTER_LINKS = [
   },
 ];
 
+const PATIENT_LINKS = [
+  {
+    id: 1,
+    route: '/',
+    label: 'خانه',
+    icon: <AiTwotoneHome />
+  },
+  {
+    id: 2,
+    route: '/search',
+    label: 'جستجو',
+    icon: <BsSearch />
+  },
+  {
+    id: 3,
+    route: '/',
+    label: 'نوبت های من',
+    icon: <BsCalendarDateFill />
+  },
+  {
+    id: 4,
+    route: '/',
+    label: 'پروفایل',
+    icon: <CgProfile />
+  },
+];
+
 export const getAllLinks = () => {
   return LINKS;
 };
 
 export const getFooterLinks = () => {
   return FOOTER_LINKS;
+};
+
+export const getPatientTabs = () => {
+  return PATIENT_LINKS;
 };

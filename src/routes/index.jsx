@@ -1,7 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
 import routes from "@routes/routes";
 
-function Routes() {
+function AppARoutes() {
     return (<>
         <Routes>
             {routes.map((item, index) => {
@@ -12,4 +13,4 @@ function Routes() {
     </>);
 }
 
-export default Routes;
+export default AppARoutes;

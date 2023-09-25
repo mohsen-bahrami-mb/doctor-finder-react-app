@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-
 import { HiMenuAlt3 } from "react-icons/hi";
-import MenuSidebar from "./MenuSidebar";
+import React from "react";
+import useOpen from "../../stores/useOpen";
 
 const Menu = () => {
-  const [open, setOpen] = useState(false);
-    
-    return (
-        <div className="lg:hidden">
-            <HiMenuAlt3 onClick={()=> setOpen(true)} className="text-3xl hover:text-[#0E82FD] duration-200 cursor-pointer text-slate-900" />
-            <MenuSidebar open={open} setOpen={setOpen}/>
-        </div>
-    );
+  const { onOpen } = useOpen();
+  return (
+    <div className="lg:hidden">
+      <HiMenuAlt3
+        onClick={onOpen}
+        className="text-3xl hover:text-[#0E82FD] duration-200 cursor-pointer text-slate-900"
+      />
+    </div>
+  );
 };
 
 export default Menu;

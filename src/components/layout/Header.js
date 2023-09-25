@@ -6,7 +6,7 @@ import Register from "../navbar/Register";
 
 const Header = () => {
   return (
-    <div className="flex sticky items-center justify-between bg-white shadow-md px-10 xl:px-20 py-5">
+    <div className="flex sticky top-0 left-0 w-full items-center justify-between bg-white shadow-md px-10 xl:px-20 py-5">
       <Menu />
       <NavLinks />
       <Logo />

@@ -1,2 +1,8 @@
 {
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#1C2C53",
+    "titleBar.activeBackground": "#273E74",
+    "titleBar.activeForeground": "#FAFBFD"
+  },
+  "cSpell.words": ["classname", "zustand"]
 }

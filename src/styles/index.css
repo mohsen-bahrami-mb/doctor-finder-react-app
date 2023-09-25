@@ -6,10 +6,19 @@ html,
 body {
   max-width: 15150px;
   margin: 0 auto;
+  background-color: #F2F6F6;
 }
 
 @layer components {
   .section {
     @apply p-10 lg:px-20
+  }
+
+  .text-blue {
+    @apply text-[#0E82FD]
+  }
+
+  .bg-blue {
+    @apply bg-[#0E82FD]
   }
 }
