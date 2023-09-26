@@ -10,7 +10,7 @@ const Right = () => {
   return (
     <div className="lg:col-span-2 items-center grid grid-cols-1 md:grid-cols-3 mx-auto gap-5">
       <img
-        className="w-32 md:w-full rounded-lg mx-auto lg:col-span-1 "
+        className="w-32 md:w-full md:h-full object-cover rounded-lg mx-auto lg:col-span-1 "
         src={doctor}
         alt="doctor"
       />
