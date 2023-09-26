@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import routes from "@routes/routes";
 
-function AppARoutes() {
+function AppRoutes() {
     return (<>
         <Routes>
             {routes.map((item, index) => {
@@ -13,4 +13,4 @@ function AppARoutes() {
     </>);
 }
 
-export default AppARoutes;
+export default AppRoutes;

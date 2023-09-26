@@ -1,7 +1,7 @@
 import Bottom from '../footer/Bottom';
 import React from 'react';
 import Top from '../footer/Top';
-import { getFooterLinks } from '../../utils/data';
+import { getFooterLinks } from '../../constants/data';
 
 const Footer = () => {
     const data = getFooterLinks();

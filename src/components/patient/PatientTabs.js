@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { getPatientTabs } from "../../utils/data";
+import { getPatientTabs } from "../../constants/data";
 
 const PatientTabs = () => {
   const tabs = getPatientTabs();

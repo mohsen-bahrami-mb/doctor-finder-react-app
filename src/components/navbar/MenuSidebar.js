@@ -5,10 +5,10 @@ import React, { useState } from "react";
 import { LiaUserNurseSolid } from "react-icons/lia";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { SiSkypeforbusiness } from "react-icons/si";
-import { getAllLinks } from "../../utils/data";
+import { getAllLinks } from "../../constants/data";
 import logo from "../../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
-import useOpen from "./../../stores/useOpen";
+import useOpen from "../../stores/useOpen";
 
 const icons = [
   { id: 1, option: "online", name: <SiSkypeforbusiness /> },
@@ -22,11 +22,29 @@ const MenuSidebar = () => {
   const [tab, setTab] = useState("patient");
   const navigate = useNavigate();
   const { isOpen, onClose } = useOpen();
+  let p;
+  switch (tab) {
+    case "online":
+      p = "مشاوره آنلاین پزشکی";
+      break;
+    case "specialist":
+      p = "تخصص ها";
+      break;
+    case "blog":
+      p = "مجله سلامتی";
+      break;
+    case "patient":
+      p = "بیماران";
+      break;
+    default:
+      break;
+  }
+
   return (
     <div
-      className={`fixed top-0 shadow-lg bg-white h-full ${
-        isOpen ? "right-0 z-50" : "-right-72"
-      } w-72 duration-300 flex`}
+      className={`fixed top-0 z-50 shadow-lg bg-white h-full ${
+        isOpen ? "right-0" : "-right-72"
+      } w-72 duration-300 flex lg:hidden`}
     >
       <div className="w-[20%] flex flex-col items-center py-5 bg-opacity-20 bg-gray-400">
         <RiCloseCircleFill
@@ -58,16 +76,24 @@ const MenuSidebar = () => {
         >
           <img src={logo} alt="logo" className="w-24" />
         </div>
-        <div className="p-2 h-screen overflow-y-auto">
-          {links?.map(({ items, id, slug }) => (
-            <div key={id} className={`${tab === slug ? "block" : "hidden"}`}>
-              {items?.map(({ label }) => (
-                <p className="text-sm hover:bg-[#0E82FD] duration-200 cursor-pointer hover:text-white rounded-md text-gray-500 font-semibold my-3 p-2">
-                  {label}
-                </p>
-              ))}
-            </div>
-          ))}
+        <div className="relative">
+          <h2 className="p-3 text-white absolute right-0 w-full top-0 font-bold text-md text-center bg-blue-300">
+            {p}
+          </h2>
+          <div className="p-2 h-screen overflow-y-auto">
+            {links?.map(({ items, id, slug }) => (
+              <div
+                key={id}
+                className={`${tab === slug ? "block" : "hidden"} mt-14`}
+              >
+                {items?.map(({ label }) => (
+                  <p className="text-sm hover:bg-[#0E82FD] duration-200 cursor-pointer hover:text-white rounded-md text-gray-500 font-semibold my-3 p-2">
+                    {label}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

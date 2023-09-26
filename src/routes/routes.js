@@ -1,5 +1,5 @@
-import Home from "../components/homPage/Home";
-import SearchPage from "../components/search/SearchPage";
+import Home from "../pages/homPage/Home";
+import SearchPage from "../pages/search/SearchPage";
 
 const homeRoutes = [
     {path: "/", element: <Home />},

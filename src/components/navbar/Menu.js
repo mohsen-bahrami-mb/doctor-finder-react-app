@@ -1,6 +1,6 @@
 import { HiMenuAlt3 } from "react-icons/hi";
 import React from "react";
-import useOpen from "../../stores/useOpen";
+import useOpen from './../../stores/useOpen';
 
 const Menu = () => {
   const { onOpen } = useOpen();

@@ -1,6 +1,6 @@
 import NavLink from './NavLink';
 import React from 'react';
-import { getAllLinks } from './../../utils/data';
+import { getAllLinks } from '../../constants/data';
 
 const NavLinks = () => {
     const links = getAllLinks();

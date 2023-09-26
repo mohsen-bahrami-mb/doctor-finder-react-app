@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { FiSearch } from "react-icons/fi";
 import Input from "./Input";
-import Location from "../homPage/Location";
+import Location from "../../pages/homPage/Location";
 
 const Search = () => {
   const [searched, setSearched] = useState("");
