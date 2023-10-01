@@ -31,7 +31,7 @@ const Filter = () => {
   const [selectedSpecialist, setSelectedSpecialist] = useState("دکتر آنلاین ازدواج");
   const [selectedDoctorType, setSelectedDoctorType] = useState("doctors");
   const [selectedDoctorDegree, setSelectedDoctorDegree] = useState("fellowship");
-console.log(selectedSpecialist);
+
   const handleGender = (event) => {
     setSelectedGender(event.target.value);
   };

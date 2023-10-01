@@ -2,7 +2,6 @@ import { FaStethoscope, FaUserDoctor } from "react-icons/fa6";
 import { MdOutlineArticle, MdOutlineSick } from "react-icons/md";
 import React, { useState } from "react";
 
-import { LiaUserNurseSolid } from "react-icons/lia";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { SiSkypeforbusiness } from "react-icons/si";
 import { getAllLinks } from "../../constants/data";
@@ -15,7 +14,6 @@ const icons = [
   { id: 2, option: "specialist", name: <FaUserDoctor /> },
   { id: 3, option: "blog", name: <MdOutlineArticle /> },
   { id: 4, option: "patient", name: <MdOutlineSick /> },
-  { id: 5, option: "login", name: <LiaUserNurseSolid /> },
 ];
 const MenuSidebar = () => {
   const links = getAllLinks();
@@ -58,11 +56,11 @@ const MenuSidebar = () => {
         <div className="flex flex-col gap-7 text-xl ">
           {icons.map(({ id, name, option }) => (
             <div
+              key={id}
               onClick={() => setTab(option)}
               className={`text-gray-500 hover:text-white duration-200 cursor-pointer hover:bg-[#0E82FD] ${
                 tab === option && "text-white bg-[#0E82FD]"
               } w-7 h-7 flex items-center justify-center rounded-lg p-1`}
-              key={id}
             >
               {name}
             </div>
@@ -86,8 +84,11 @@ const MenuSidebar = () => {
                 key={id}
                 className={`${tab === slug ? "block" : "hidden"} mt-14`}
               >
-                {items?.map(({ label }) => (
-                  <p className="text-sm hover:bg-[#0E82FD] duration-200 cursor-pointer hover:text-white rounded-md text-gray-500 font-semibold my-3 p-2">
+                {items?.map(({ label, id }) => (
+                  <p
+                    key={id}
+                    className="text-sm hover:bg-[#0E82FD] duration-200 cursor-pointer hover:text-white rounded-md text-gray-500 font-semibold my-3 p-2"
+                  >
                     {label}
                   </p>
                 ))}

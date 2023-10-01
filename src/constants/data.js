@@ -170,8 +170,7 @@ const LINKS = [
       { id: 4, label: "سوالات متداول" },
       { id: 5, label: "مجله سلامتی" },
     ],
-  },
-  { id: 5, name: "ورود پزشکان" },
+  }
 ];
 
 const FOOTER_LINKS = [
