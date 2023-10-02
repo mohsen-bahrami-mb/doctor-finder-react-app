@@ -1,9 +1,10 @@
-import { AiTwotoneHome, AiTwotonePhone } from "react-icons/ai";
+import { AiFillSchedule, AiTwotoneHome, AiTwotonePhone } from "react-icons/ai";
+import { BsBookmarkFill, BsCalendarDateFill } from "react-icons/bs";
 
-import { BsCalendarDateFill } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { FiChevronsLeft } from "react-icons/fi";
+import { HiMiniUsers } from "react-icons/hi2";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 
@@ -232,8 +233,36 @@ const PATIENT_LINKS = [
   },
 ];
 
+const DASHBOARD_LINKS = [
+  {
+    id: 1,
+    slug: 'appointments',
+    route: '/dashboard/appointments/',
+    label: 'نوبت های من',
+    Icon: <AiFillSchedule />
+  },
+  {
+    id: 2,
+    slug: 'bookmarks',
+    route: '/dashboard/bookmarks/',
+    label: 'لیست پزشکان من',
+    Icon: <BsBookmarkFill />
+  },
+  {
+    id: 3,
+    slug: 'subuser',
+    route: '/dashboard/subuser/',
+    label: 'کاربران زیرمجموعه',
+    Icon: <HiMiniUsers />
+  },
+];
+
 export const getAllLinks = () => {
   return LINKS;
+};
+
+export const getAllDashboardLinks = () => {
+  return DASHBOARD_LINKS;
 };
 
 export const getFooterLinks = () => {
