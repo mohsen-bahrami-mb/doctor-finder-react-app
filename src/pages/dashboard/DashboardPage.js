@@ -12,8 +12,10 @@ const DashBoardPage = () => {
           <h3>داشبورد</h3>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-        <DashboardSidebar />
+      <div className="grid gap-2 grid-cols-1 section md:grid-cols-3 lg:grid-cols-4 h-fit">
+        <div className="md:sticky md:top-28 md:h-[70vh]">
+          <DashboardSidebar />
+        </div>
         <div className="md:col-span-2 lg:col-span-3">
           <Outlet />
         </div>

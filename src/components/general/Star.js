@@ -3,7 +3,7 @@ import React from 'react';
 
 const Star = () => {
     return (
-        <AiFillStar className='text-[#F2A54A]' />
+        <AiFillStar className='text-[#f2ce4a]' />
     );
 };
 

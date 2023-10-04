@@ -5,27 +5,31 @@ import MenuSidebar from "./components/navbar/MenuSidebar";
 import PatientTabs from "./components/patient/PatientTabs";
 import RegisterModal from "./components/modal/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
+import UserModal from "./components/modal/UserModal";
 import { useEffect } from "react";
 import useLoginModal from "./stores/useLoginModal";
+import useNewUser from "./stores/useNewUser";
 import useRegisterModal from "./stores/useRegisterModal";
 
 function App() {
   const { isRegisterOpen } = useRegisterModal();
   const { isLoginOpen } = useLoginModal();
-  
-  useEffect(()=> {
-    if (isLoginOpen || isRegisterOpen) {
-      document.body.classList.add("overflow-hidden"); 
+  const { isUserOpen } = useNewUser();
+
+  useEffect(() => {
+    if (isLoginOpen || isRegisterOpen || isUserOpen) {
+      document.body.classList.add("overflow-hidden");
     } else {
-      document.body.classList.remove("overflow-hidden"); 
+      document.body.classList.remove("overflow-hidden");
     }
-  }, [isLoginOpen, isRegisterOpen])
-  
+  }, [isLoginOpen, isRegisterOpen, isUserOpen]);
+
   return (
     <Layout>
       <ToasterProvider />
       {isRegisterOpen && <RegisterModal />}
       {isLoginOpen && <LoginModal />}
+      {isUserOpen && <UserModal />}
       <AppRoutes />
       <PatientTabs />
       <MenuSidebar />

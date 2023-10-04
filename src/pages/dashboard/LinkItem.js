@@ -10,7 +10,7 @@ const LinkItem = ({ slug, route, label, Icon }) => {
     <div
       onClick={() => navigate(route)}
       className={`flex items-center hover:text-blue ${
-        pathname === route && "text-blue"
+        pathname === route && "text-blue-600"
       } duration-200 border cursor-pointer p-3 gap-3 text-gray-500 font-medium`}
     >
       <span className="text-xl">{Icon}</span>
