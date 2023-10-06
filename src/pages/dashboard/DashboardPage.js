@@ -1,14 +1,31 @@
+import { Outlet, useNavigate } from "react-router-dom";
+
 import DashboardSidebar from "./DashboardSidebar";
-import { Outlet } from "react-router-dom";
 import React from "react";
+import bg from "../../assets/images/dashboard/bg.jpg";
+import useRegisterModal from "../../stores/useRegisterModal";
+import useTokenState from "../../stores/useTokenState";
 
 const DashBoardPage = () => {
+  const navigate = useNavigate();
+  const { onRegisterOpen } = useRegisterModal();
+  const { isToken } = useTokenState();
+  
+  if (!isToken) {
+    navigate("/");
+    onRegisterOpen();
+  }
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-32 bg-slate-200">
+      <div
+        style={{ backgroundImage: `url(${bg})` }}
+        className="flex bg-no-repeat bg-cover flex-col items-center justify-center h-32 bg-slate-200"
+      >
         <h2 className="text-3xl font-semibold text-slate-900">داشبورد</h2>
         <div className="flex gap-1 font-medium text-sm text-gray-700 mt-3">
-          <h3>خانه /</h3>
+          <h3 className="cursor-pointer" onClick={() => navigate("/")}>
+            خانه /
+          </h3>
           <h3>داشبورد</h3>
         </div>
       </div>

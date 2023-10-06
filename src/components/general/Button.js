@@ -1,8 +1,9 @@
 import React from "react";
 
-const Button = ({ label, filled, onclick, large, full }) => {
+const Button = ({ label, filled, onclick, large, full, disabled }) => {
   return (
     <button
+    disabled={disabled}
       onClick={onclick}
       className={`${
         filled
