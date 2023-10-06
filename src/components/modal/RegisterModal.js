@@ -1,12 +1,19 @@
+import React, { useState } from "react";
+
 import Button from "../general/Button";
 import { IoCloseCircleSharp } from "react-icons/io5";
-import React from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useLoginModal from "../../stores/useLoginModal";
 import useRegisterModal from "../../stores/useRegisterModal";
+import useTokenState from "../../stores/useTokenState";
 
 const RegisterModal = () => {
+  const [loading, setLoading] = useState(false);
+  const { onRegisterClose } = useRegisterModal();
+  const { onSetToken } = useTokenState();
+
   const {
     register,
     reset,
@@ -15,12 +22,28 @@ const RegisterModal = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    toast.success("با موفقیت ثبت نام کردید!");
-    reset();
-    onRegisterClose();
+    setLoading(true);
+    try {
+      axios
+        .post(`/auth/register`, data)
+        .then((res) => {
+          const token = res?.data?.data["x-auth-token"] || null;
+          onSetToken(token);
+          toast.success("ثبت نام با موفقیت انجام شد!");
+          onRegisterClose();
+        })
+        .catch((error) => {
+          toast.error(error);
+        })
+        .finally(() => {
+          setLoading(false);
+          reset();
+        });
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
-  const { onRegisterClose } = useRegisterModal();
   const { onLoginOpen } = useLoginModal();
 
   const loginOpenHandler = () => {
@@ -41,20 +64,20 @@ const RegisterModal = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
           <div className="mb-4">
             <label
-              htmlFor="name"
+              htmlFor="first_name"
               className="block text-gray-500 font-semibold text-sm mb-2"
             >
               نام
             </label>
             <input
               type="text"
-              id="name"
-              {...register("name", { required: true })}
+              id="first_name"
+              {...register("first_name", { required: true })}
               className={`shadow border rounded-md w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:border-blue-600 h-12 ${
-                errors.name && "border-red-500"
+                errors.first_name && "border-red-500"
               }`}
             />
-            {errors.name && (
+            {errors.first_name && (
               <span className="text-red-500 text-sm">
                 لطفا یک نام وارد کنید
               </span>
@@ -62,20 +85,20 @@ const RegisterModal = () => {
           </div>
           <div className="mb-4">
             <label
-              htmlFor="lastname"
+              htmlFor="last_name"
               className="block text-gray-500 font-semibold text-sm mb-2"
             >
               نام خانوادگی
             </label>
             <input
               type="text"
-              id="lastname"
-              {...register("lastname", { required: true })}
+              id="last_name"
+              {...register("last_name", { required: true })}
               className={`shadow border rounded-md w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:border-blue-600 h-12 ${
-                errors.lastname && "border-red-500"
+                errors.last_name && "border-red-500"
               }`}
             />
-            {errors.lastname && (
+            {errors.last_name && (
               <span className="text-red-500 text-sm">
                 لطفا یک نام خانوادگی وارد کنید
               </span>
@@ -124,7 +147,14 @@ const RegisterModal = () => {
               </span>
             )}
           </div>
-          <Button filled full large label="ثبت نام" type="submit" />
+          <Button
+            disabled={loading}
+            filled
+            full
+            large
+            label="ثبت نام"
+            type="submit"
+          />
         </form>
         <div
           className="

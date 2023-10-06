@@ -5,7 +5,7 @@ const Req = () => {
   return (
     <div className="overflow-auto h-[305px]">
       <table className="w-[970px] text-right bg-white border-collapse">
-        <thead className="border-b-2 border-slate-800">
+        <thead className="border-b-2 bg-blue-100 border-slate-800">
           <tr className="text-slate-800">
             <th className="py-2 px-4 border-b">#</th>
             <th className="py-2 px-4 border-b">شناسه درخواست</th>

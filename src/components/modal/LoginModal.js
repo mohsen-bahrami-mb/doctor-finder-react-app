@@ -1,12 +1,18 @@
+import React, { useState } from "react";
+
 import Button from "../general/Button";
 import { IoCloseCircleSharp } from "react-icons/io5";
-import React from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useLoginModal from "../../stores/useLoginModal";
 import useRegisterModal from "../../stores/useRegisterModal";
 
 const LoginModal = () => {
+  const [loading, setLoading] = useState(false);
+  const { onRegisterOpen } = useRegisterModal();
+  const { onLoginClose } = useLoginModal();
+  
   const {
     register,
     reset,
@@ -14,14 +20,30 @@ const LoginModal = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    toast.success("وارد شدید!");
-    reset();
-    onLoginClose();
-  };
 
-  const { onRegisterOpen } = useRegisterModal();
-  const { onLoginClose } = useLoginModal();
+const onSubmit = (data) => {
+  setLoading(true);
+  try {
+    axios
+      .post(`/auth/login`, data)
+      .then((res) => {
+        console.log(res);
+        toast.success("وارد شدید!");
+        onLoginClose();
+      })
+      .catch((error) => {
+        toast.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+        reset();
+      });
+    
+  } catch (error) {
+    toast.error(error.message)
+  }
+};
+
   const registerOpenHandler = () => {
     onRegisterOpen();
     onLoginClose();
@@ -39,20 +61,20 @@ const LoginModal = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
           <div className="mb-4">
             <label
-              htmlFor="name"
+              htmlFor="phone"
               className="block text-gray-500 font-semibold text-sm mb-2"
             >
-              نام
+              شماره تلفن
             </label>
             <input
               type="text"
-              id="name"
-              {...register("name", { required: true })}
+              id="phone"
+              {...register("phone", { required: true })}
               className={`shadow border rounded-md w-full py-2 px-3 text-gray-700 leading-tight outline-none focus:border-blue-600 h-12 ${
-                errors.name && "border-red-500"
+                errors.phone && "border-red-500"
               }`}
             />
-            {errors.name && (
+            {errors.phone && (
               <span className="text-red-500 text-sm">
                 لطفا یک نام وارد کنید
               </span>
@@ -80,7 +102,7 @@ const LoginModal = () => {
               </span>
             )}
           </div>
-          <Button filled full large label="ورود" type="submit" />
+          <Button disabled={loading} filled full large label="ورود" type="submit" />
         </form>
         <div
           className="
