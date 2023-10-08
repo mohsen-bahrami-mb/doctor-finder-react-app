@@ -1,7 +1,8 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 import DashboardSidebar from "./DashboardSidebar";
-import React from "react";
+import axios from "axios";
 import bg from "../../assets/images/dashboard/bg.jpg";
 import useRegisterModal from "../../stores/useRegisterModal";
 import useTokenState from "../../stores/useTokenState";
@@ -10,11 +11,26 @@ const DashBoardPage = () => {
   const navigate = useNavigate();
   const { onRegisterOpen } = useRegisterModal();
   const { isToken } = useTokenState();
-  
   if (!isToken) {
     navigate("/");
     onRegisterOpen();
   }
+  
+  useEffect(() => {
+    axios("/profile/user", {
+      headers: {
+        "x-auth-token": isToken,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isToken]);
+  
   return (
     <>
       <div

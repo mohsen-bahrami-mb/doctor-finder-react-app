@@ -6,6 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useLoginModal from "../../stores/useLoginModal";
+import { useNavigate } from "react-router";
 import useRegisterModal from "../../stores/useRegisterModal";
 import useTokenState from "../../stores/useTokenState";
 
@@ -13,6 +14,7 @@ const RegisterModal = () => {
   const [loading, setLoading] = useState(false);
   const { onRegisterClose } = useRegisterModal();
   const { onSetToken } = useTokenState();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -29,8 +31,10 @@ const RegisterModal = () => {
         .then((res) => {
           const token = res?.data?.data["x-auth-token"] || null;
           onSetToken(token);
+          axios.defaults.headers.common["x-auth-token"] = token;
           toast.success("ثبت نام با موفقیت انجام شد!");
           onRegisterClose();
+          navigate("/dashboard/appointments");
         })
         .catch((error) => {
           toast.error(error);

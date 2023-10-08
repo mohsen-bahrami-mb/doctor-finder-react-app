@@ -6,13 +6,15 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useLoginModal from "../../stores/useLoginModal";
+import { useNavigate } from "react-router";
 import useRegisterModal from "../../stores/useRegisterModal";
 
 const LoginModal = () => {
   const [loading, setLoading] = useState(false);
   const { onRegisterOpen } = useRegisterModal();
   const { onLoginClose } = useLoginModal();
-  
+  const navigate = useNavigate();
+
   const {
     register,
     reset,
@@ -20,29 +22,28 @@ const LoginModal = () => {
     formState: { errors },
   } = useForm();
 
-
-const onSubmit = (data) => {
-  setLoading(true);
-  try {
-    axios
-      .post(`/auth/login`, data)
-      .then((res) => {
-        console.log(res);
-        toast.success("وارد شدید!");
-        onLoginClose();
-      })
-      .catch((error) => {
-        toast.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-        reset();
-      });
-    
-  } catch (error) {
-    toast.error(error.message)
-  }
-};
+  const onSubmit = (data) => {
+    setLoading(true);
+    try {
+      axios
+        .post(`/auth/login`, data)
+        .then((res) => {
+          console.log(res);
+          toast.success("وارد شدید!");
+          onLoginClose();
+          navigate("/dashboard/appointments");
+        })
+        .catch((error) => {
+          toast.error(error);
+        })
+        .finally(() => {
+          setLoading(false);
+          reset();
+        });
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   const registerOpenHandler = () => {
     onRegisterOpen();
@@ -102,7 +103,14 @@ const onSubmit = (data) => {
               </span>
             )}
           </div>
-          <Button disabled={loading} filled full large label="ورود" type="submit" />
+          <Button
+            disabled={loading}
+            filled
+            full
+            large
+            label="ورود"
+            type="submit"
+          />
         </form>
         <div
           className="

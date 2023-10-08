@@ -1,5 +1,6 @@
 import Bookmarks from "../pages/dashboard/bookmarks/Bookmarks";
 import DashboardPage from "../pages/dashboard/DashboardPage";
+import DoctorPage from "../pages/doctor/DoctorPage";
 import Home from "../pages/homPage/Home";
 import Oppontments from "../pages/dashboard/oppointments/Oppontments";
 import SearchPage from "../pages/search/SearchPage";
@@ -12,6 +13,7 @@ const nestedDashboardRoutes = [
 const homeRoutes = [
   { path: "/", element: <Home /> },
   { path: "/search", element: <SearchPage /> },
+  { path: "/:doctor", element: <DoctorPage /> },
   { path: "/dashboard", element: <DashboardPage />, children: nestedDashboardRoutes },
 ];
 
