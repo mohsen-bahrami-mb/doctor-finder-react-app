@@ -9,9 +9,8 @@ const LinkItem = ({ slug, route, label, Icon }) => {
   return (
     <div
       onClick={() => navigate(route)}
-      className={`flex items-center hover:text-blue ${
-        pathname === route && "text-blue-600"
-      } duration-200 border cursor-pointer p-3 gap-3 text-gray-500 font-medium`}
+      style={{color: `${pathname === route ? '#0E82FD' : ''}`}}
+      className={`flex items-center hover:text-blue duration-200 border cursor-pointer p-3 gap-3 text-gray-500 font-medium`}
     >
       <span className="text-xl">{Icon}</span>
       <span>{label}</span>

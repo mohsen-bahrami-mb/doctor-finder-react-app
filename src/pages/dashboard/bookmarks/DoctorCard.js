@@ -7,8 +7,10 @@ import React from "react";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
 import Star from "../../../components/general/Star";
 import doctor from "../../../assets/images/dashboard/e8a9570dc3b6da522754.jpg";
+import { useNavigate } from "react-router-dom";
 
 const DoctorCard = () => {
+  const navigate = useNavigate();
   return (
     <div className="p-5 border rounded-md hover:shadow-md duration-200">
       <div className="overflow-hidden rounded-md">
@@ -36,7 +38,7 @@ const DoctorCard = () => {
       </div>
       <div className="grid grid-cols-2 mt-6 items-center gap-5">
         <Button label='رزرو نوبت' filled onclick={()=> {}} />
-        <Button label='پروفایل' onclick={()=> {}} />
+        <Button label='پروفایل' onclick={() => navigate("/doctor")} />
       </div>
     </div>
   );

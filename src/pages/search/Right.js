@@ -5,8 +5,10 @@ import IconWithText from "../../components/general/IconWithText";
 import React from "react";
 import Star from "../../components/general/Star";
 import doctor from "../../assets/images/book-doctor-11-255x250.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Right = () => {
+  const navigate = useNavigate();
   return (
     <div className="lg:col-span-2 items-center grid grid-cols-1 md:grid-cols-3 mx-auto gap-5">
       <img
@@ -15,7 +17,7 @@ const Right = () => {
         alt="doctor"
       />
       <div className="text-center lg:text-right space-y-5 md:col-span-2">
-        <div className="flex gap-1 justify-center items-center lg:justify-start">
+        <div onClick={() => navigate("/doctor")} className="flex gap-1 justify-center items-center lg:justify-start">
           <h2 className="text-gray-500 hover:text-blue duration-200 cursor-pointer font-semibold">
             نرگس اصغری
           </h2>

@@ -4,8 +4,10 @@ import IconWithText from "../../components/general/IconWithText";
 import { LuCalendar } from "react-icons/lu";
 import React from "react";
 import { TiTick } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 
 const Left = () => {
+  const navigate = useNavigate();
   return (
     <div className="space-y-5">
       <div className="space-y-1 mb-10">
@@ -17,7 +19,12 @@ const Left = () => {
           color="text-[#15803D]"
         />
       </div>
-      <Button full large label="مشاهده پروفایل" />
+      <Button
+        onclick={() => navigate("/doctor")}
+        full
+        large
+        label="مشاهده پروفایل"
+      />
     </div>
   );
 };
