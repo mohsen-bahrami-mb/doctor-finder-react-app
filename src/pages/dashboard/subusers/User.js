@@ -4,7 +4,7 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 
 const User = () => {
     return (
-        <div className="flex flex-col p-3 border rounded-md lg:flex-row md:justify-between md:items-center gap-10">
+        <div className="flex flex-col p-3 border bg-slate-50 rounded-md lg:flex-row md:justify-between md:items-center gap-10">
                 <div>
                     <h3 className="text-slate-800 text-lg font-medium mb-2">علی اکبری</h3>
                     <div className="flex items-center gap-7 text-slate-600">
