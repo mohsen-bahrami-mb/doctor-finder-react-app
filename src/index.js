@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://doctor-finder.iran.liara.run';
+axios.defaults.baseURL = 'https://backend.pezeshke.ir/api';
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
