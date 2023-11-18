@@ -18,18 +18,15 @@ const DashBoardPage = () => {
   }
 
   useEffect(() => {
-    axios("/user/profile", {
+    isToken && axios("/user/profile", {
       headers: {
-        // "x-auth-token": isToken,
+        "x-auth-token": isToken,
         "Content-Type": "application/json",
       },
     })
       .then((res) => {
-        const token = res.headers["x-auth-token"] || null;
-        onSetToken(token);
-        const user = res.data.data || null;
+        const user = JSON.stringify(res.data.data) || null;
         onSetUser(user);
-        axios.defaults.headers.common["x-auth-token"] = token;
         console.log(res);
       })
       .catch((err) => {

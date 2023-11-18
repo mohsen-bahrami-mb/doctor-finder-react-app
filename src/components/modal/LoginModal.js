@@ -14,7 +14,7 @@ const LoginModal = () => {
   const [loading, setLoading] = useState(false);
   const { onRegisterOpen } = useRegisterModal();
   const { onLoginClose } = useLoginModal();
-  const { onSetToken } = useTokenState();
+  const { onSetToken, isToken } = useTokenState();
   const navigate = useNavigate();
 
   const {
@@ -30,9 +30,9 @@ const LoginModal = () => {
       axios
         .post(`/auth/login`, data)
         .then((res) => {
-          console.log(res);
           const token = res?.data?.data["x-auth-token"] || null;
           onSetToken(token);
+          axios.defaults.headers.common["x-auth-token"] = token;
           toast.success("وارد شدید!");
           onLoginClose();
           navigate("/dashboard/appointments");
