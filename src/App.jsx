@@ -19,15 +19,14 @@ function App() {
   const { isUserOpen } = useNewUser();
   const { isToken } = useTokenState();
 
-  axios.defaults.headers.common["x-auth-token"] = isToken;
-
   useEffect(() => {
+    axios.defaults.headers.common["x-auth-token"] = isToken;
     if (isLoginOpen || isRegisterOpen || isUserOpen) {
       document.body.classList.add("overflow-hidden");
     } else {
       document.body.classList.remove("overflow-hidden");
     }
-  }, [isLoginOpen, isRegisterOpen, isUserOpen]);
+  }, [isLoginOpen, isRegisterOpen, isUserOpen, isToken]);
 
   return (
     <Layout>

@@ -6,31 +6,37 @@ import axios from "axios";
 import bg from "../../assets/images/dashboard/bg.jpg";
 import useRegisterModal from "../../stores/useRegisterModal";
 import useTokenState from "../../stores/useTokenState";
+import toast from "react-hot-toast";
 
 const DashBoardPage = () => {
   const navigate = useNavigate();
   const { onRegisterOpen } = useRegisterModal();
-  const { isToken } = useTokenState();
+  const { isToken, onSetToken, onSetUser } = useTokenState();
   if (!isToken) {
     // navigate("/");
     // onRegisterOpen();
   }
-  
+
   useEffect(() => {
-    axios("/profile/user", {
+    axios("/user/profile", {
       headers: {
-        "x-auth-token": isToken,
+        // "x-auth-token": isToken,
         "Content-Type": "application/json",
       },
     })
       .then((res) => {
+        const token = res.headers["x-auth-token"] || null;
+        onSetToken(token);
+        const user = res.data.data || null;
+        onSetUser(user);
+        axios.defaults.headers.common["x-auth-token"] = token;
         console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err);;
       });
   }, [isToken]);
-  
+
   return (
     <>
       <div
