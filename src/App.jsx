@@ -10,11 +10,16 @@ import { useEffect } from "react";
 import useLoginModal from "./stores/useLoginModal";
 import useNewUser from "./stores/useNewUser";
 import useRegisterModal from "./stores/useRegisterModal";
+import useTokenState from "./stores/useTokenState";
+import axios from "axios";
 
 function App() {
   const { isRegisterOpen } = useRegisterModal();
   const { isLoginOpen } = useLoginModal();
   const { isUserOpen } = useNewUser();
+  const { isToken } = useTokenState();
+
+  axios.defaults.headers.common["x-auth-token"] = isToken;
 
   useEffect(() => {
     if (isLoginOpen || isRegisterOpen || isUserOpen) {
