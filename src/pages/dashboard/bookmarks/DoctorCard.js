@@ -37,7 +37,7 @@ const DoctorCard = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 mt-6 items-center gap-5">
-        <Button label='رزرو نوبت' filled onclick={()=> {}} />
+        <Button label='رزرو نوبت' filled onclick={()=> navigate("/dashboard/bookmarks/:visit")} />
         <Button label='پروفایل' onclick={() => navigate("/doctor")} />
       </div>
     </div>

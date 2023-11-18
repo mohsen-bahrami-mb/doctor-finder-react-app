@@ -7,8 +7,8 @@ const Oppontments = () => {
   const [tab, setTab] = useState("opp");
   return (
     <div className="bg-white px-5 py-16 overflow-hidden rounded-md shadow-md">
-      <h2 className="text-slate-800 font-bold text-xl">نوبت های من</h2>
-      <div className="my-8 text-sm font-medium flex text-slate-600 gap-5">
+      <h2 className="text-slate-800 mb-16 font-bold text-xl">نوبت های من</h2>
+      {/* <div className="my-8 text-sm font-medium flex text-slate-600 gap-5">
         <h3
           className={`${
             tab === "opp" && "text-blue border-b-2"
@@ -25,7 +25,7 @@ const Oppontments = () => {
         >
           درخواست ها
         </h3>
-      </div>
+      </div> */}
       {tab === "opp" ? <Opp /> : <Req />}
     </div>
   );

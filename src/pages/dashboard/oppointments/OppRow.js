@@ -30,7 +30,7 @@ const OppRow = () => {
       <td className="py-2 px-4 border-b">
         <h3 className="text-green-700 bg-green-200 text-center text-sm rounded-md w-14 font-bold">تایید</h3>
       </td>
-      <td className="py-2 px-4 border-b">
+      {/* <td className="py-2 px-4 border-b">
         <div className="flex items-center gap-2">
             <div className="flex items-center py-1 px-2 rounded-md bg-blue-100 gap-1 text-blue">
                 <AiFillPrinter />
@@ -41,7 +41,7 @@ const OppRow = () => {
                 <h3 className="text-xs pb-1">مشاهده</h3>
             </div>
         </div>
-      </td>
+      </td> */}
     </tr>
   );
 };

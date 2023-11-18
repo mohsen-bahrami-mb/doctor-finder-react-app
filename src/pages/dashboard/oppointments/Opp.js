@@ -12,7 +12,7 @@ const Opp = () => {
             <th className="py-2 px-4 border-b">تاریخ رزرو</th>
             <th className="py-2 px-4 border-b">مبلغ ویزیت</th>
             <th className="py-2 px-4 border-b">وضعیت</th>
-            <th className="py-2 px-4 border-b"></th>
+            {/* <th className="py-2 px-4 border-b"></th> */}
           </tr>
         </thead>
         <tbody>

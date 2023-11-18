@@ -12,8 +12,8 @@ const DashBoardPage = () => {
   const { onRegisterOpen } = useRegisterModal();
   const { isToken } = useTokenState();
   if (!isToken) {
-    navigate("/");
-    onRegisterOpen();
+    // navigate("/");
+    // onRegisterOpen();
   }
   
   useEffect(() => {
