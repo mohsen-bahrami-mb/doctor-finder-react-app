@@ -8,11 +8,13 @@ import { useForm } from "react-hook-form";
 import useLoginModal from "../../stores/useLoginModal";
 import { useNavigate } from "react-router";
 import useRegisterModal from "../../stores/useRegisterModal";
+import useTokenState from "../../stores/useTokenState";
 
 const LoginModal = () => {
   const [loading, setLoading] = useState(false);
   const { onRegisterOpen } = useRegisterModal();
   const { onLoginClose } = useLoginModal();
+  const { onSetToken } = useTokenState();
   const navigate = useNavigate();
 
   const {
@@ -29,6 +31,8 @@ const LoginModal = () => {
         .post(`/auth/login`, data)
         .then((res) => {
           console.log(res);
+          const token = res?.data?.data["x-auth-token"] || null;
+          onSetToken(token);
           toast.success("وارد شدید!");
           onLoginClose();
           navigate("/dashboard/appointments");
