@@ -25,7 +25,7 @@ const DashBoardPage = () => {
       },
     })
       .then((res) => {
-        const user = JSON.stringify(res.data.data) || null;
+        const user = res.data.data || null;
         onSetUser(user);
         console.log(res);
       })
