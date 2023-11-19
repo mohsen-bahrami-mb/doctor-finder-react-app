@@ -2,6 +2,7 @@ import RadioInput from "./RadioInput";
 import React from "react";
 
 const RadioInputs = ({ name, options, selectedValue, onChange }) => {
+  
   return (
     <div className="flex flex-col gap-2 mt-3">
       {options.map((option) => (
@@ -9,8 +10,8 @@ const RadioInputs = ({ name, options, selectedValue, onChange }) => {
           key={option.value}
           label={option.label}
           name={name}
-          value={option.value}
-          checked={option.value === selectedValue}
+          value={option.id}
+          checked={option.id === selectedValue}
           onChange={onChange}
         />
       ))}
