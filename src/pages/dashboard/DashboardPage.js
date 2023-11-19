@@ -4,13 +4,14 @@ import React, { useEffect } from "react";
 import DashboardSidebar from "./DashboardSidebar";
 import axios from "axios";
 import bg from "../../assets/images/dashboard/bg.jpg";
-import useRegisterModal from "../../stores/useRegisterModal";
-import useTokenState from "../../stores/useTokenState";
 import toast from "react-hot-toast";
+import useTokenState from "../../stores/useTokenState";
+
+// import useRegisterModal from "../../stores/useRegisterModal";
 
 const DashBoardPage = () => {
   const navigate = useNavigate();
-  const { onRegisterOpen } = useRegisterModal();
+  // const { onRegisterOpen } = useRegisterModal();
   const { isToken, onSetToken, onSetUser } = useTokenState();
   if (!isToken) {
     // navigate("/");
@@ -33,9 +34,9 @@ const DashBoardPage = () => {
         console.log(res);
       })
       .catch((err) => {
-        toast.error(err);;
+        toast.error(err);
       });
-  }, [isToken]);
+  }, [isToken, onSetToken, onSetUser]);
 
   return (
     <>

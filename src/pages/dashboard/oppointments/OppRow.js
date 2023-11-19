@@ -1,4 +1,4 @@
-import { AiFillPrinter, AiOutlineEye } from "react-icons/ai";
+// import { AiFillPrinter, AiOutlineEye } from "react-icons/ai";
 
 import React from "react";
 import doctor from "../../../assets/images/dashboard/150001a4fc1433625841.jpg";

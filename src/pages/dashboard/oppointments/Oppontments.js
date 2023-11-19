@@ -4,7 +4,7 @@ import Opp from "./Opp";
 import Req from "./Req";
 
 const Oppontments = () => {
-  const [tab, setTab] = useState("opp");
+  const [tab] = useState("opp");
   return (
     <div className="bg-white px-5 py-16 overflow-hidden rounded-md shadow-md">
       <h2 className="text-slate-800 mb-16 font-bold text-xl">نوبت های من</h2>
