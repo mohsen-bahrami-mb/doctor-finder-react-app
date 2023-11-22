@@ -28,7 +28,6 @@ const DashBoardPage = () => {
       .then((res) => {
         const user = res.data.data || null;
         onSetUser(user);
-        console.log(res);
       })
       .catch((err) => {
         toast.error(err);

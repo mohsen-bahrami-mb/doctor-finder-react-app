@@ -14,7 +14,7 @@ const LoginModal = () => {
   const [loading, setLoading] = useState(false);
   const { onRegisterOpen } = useRegisterModal();
   const { onLoginClose } = useLoginModal();
-  const { onSetToken, isToken } = useTokenState();
+  const { onSetToken } = useTokenState();
   const navigate = useNavigate();
 
   const {

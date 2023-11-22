@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
 
 import Button from './../../components/general/Button';
-import RadioInput from "../../components/general/RadioInputs ";
+import RadioInputs from "../../components/general/RadioInputs ";
 import Select from "../../components/general/Select";
 import Title from "./Title";
+import axios from "axios";
 import { getAllLinks } from "./../../constants/data";
+import toast from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
-import useTokenState from "../../stores/useTokenState";
 import useSearchResult from "../../stores/useSearchResult";
+import useTokenState from "../../stores/useTokenState";
 
 const genders = [
   { value: "male", label: "مرد" },
@@ -104,7 +104,7 @@ const Filter = () => {
         </div> */}
         <div>
           <Title title="تخصص" />
-          <RadioInput
+          <RadioInputs
             name="specialist"
             options={specialist}
             selectedValue={selectedSpecialist}

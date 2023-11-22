@@ -1,13 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { FiSearch } from "react-icons/fi";
 import Input from "./Input";
 import Location from "../../pages/homPage/Location";
 import axios from "axios";
-import useTokenState from "../../stores/useTokenState"
-import { useNavigate, useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import useSearchResult from "../../stores/useSearchResult";
+import useTokenState from "../../stores/useTokenState"
 
 const Search = () => {
   const navigate = useNavigate();
